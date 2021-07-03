@@ -5,6 +5,7 @@ import com.example.telegramBot.service.SendBotMessageServiceRealisation;
 //import com.example.telegramBot.student.command.StudentCommandHandler;
 import com.example.telegramBot.student.command.StudentCommandHandler;
 import com.example.web.dao.service.StatisticUserService;
+import com.example.web.dao.service.TgUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -27,8 +28,8 @@ public class TelegramBot extends TelegramLongPollingBot {
     private final StudentCommandHandler studentCommandHandler;
 
     @Autowired
-    public TelegramBot(StatisticUserService statisticUserService) {
-        this.userCommandHandler = new UserCommandHandler(new SendBotMessageServiceRealisation(this), statisticUserService);
+    public TelegramBot(StatisticUserService statisticUserService, TgUserService tgUserService) {
+        this.userCommandHandler = new UserCommandHandler(new SendBotMessageServiceRealisation(this), statisticUserService, tgUserService);
         this.studentCommandHandler = new StudentCommandHandler(new SendBotMessageServiceRealisation(this));
     }
 

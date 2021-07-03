@@ -6,9 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <title>deleteUser</title>
+    <style>
+        .layer1 {
+            margin-top: 3%; /* Отступ сверху */
+            margin-left: 3%; /* Отступ слева */
+            margin-right: 5%; /* Отступ справа */
+        }
+    </style>
 </head>
 <body>
 <br>
+<div class="layer1">
 <form method="post">
     <p><h4>Вы уверены, что хотите удалить данного пользователя? </h4></p>
     <table class="table table-bordered">
@@ -46,13 +54,13 @@
     </table>
     <br>
     <br>
-    <button status="submit" class="btn btn-primary">Delete</button>
+    <button status="submit" class="btn btn-secondary">Delete</button>
     <br>
     <br>
 </form>
 <br>
 <a href="/admin/statistic">Back user list</a>
-
+</div>
 <br>
 
 </body>

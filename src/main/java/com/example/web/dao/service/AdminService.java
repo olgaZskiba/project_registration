@@ -8,8 +8,10 @@ import com.example.web.dao.repository.TgUserTableDaoWebRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AdminService {
@@ -46,7 +48,7 @@ public class AdminService {
     }
 
     public void updateDataOfUser(Long id, String userName, String firstName, String lastName, String email,
-                                 Date dateOfBirthday, Boolean active, Boolean blockUser, Boolean payment, UserRoles roles,
+                                 Date dateOfBirthday, Boolean active, Boolean blockUser, Boolean payment, Set<UserRoles> roles,
                                  CourseTable courseUser, GroupTable groupUser){
         tgUserTableDaoWebRepository.updateUsersData(id, userName, firstName, lastName, email, dateOfBirthday,
                 active, blockUser, payment, roles, courseUser, groupUser);

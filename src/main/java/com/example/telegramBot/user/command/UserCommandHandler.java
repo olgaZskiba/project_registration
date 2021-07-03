@@ -2,12 +2,9 @@ package com.example.telegramBot.user.command;
 
 import com.example.telegramBot.service.SendBotMessageService;
 
-import com.example.telegramBot.student.command.commands.ScheduleComm;
-
-import com.example.telegramBot.student.command.commands.HomeWorkComm;
-
 import com.example.telegramBot.user.command.commands.*;
 import com.example.web.dao.service.StatisticUserService;
+import com.example.web.dao.service.TgUserService;
 import com.google.common.collect.ImmutableMap;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -18,7 +15,7 @@ public class UserCommandHandler {
     private final ImmutableMap<String, Command> commandMap;
     private final Command unknownComm;
 
-    public UserCommandHandler(SendBotMessageService sendBotMessageService, StatisticUserService statisticUserService) {
+    public UserCommandHandler(SendBotMessageService sendBotMessageService, StatisticUserService statisticUserService, TgUserService tgUserService) {
 
         commandMap = ImmutableMap.<String, Command>builder()
                 //.put(START.getCommandName(), new StartComm(sendBotMessageService))
@@ -29,12 +26,12 @@ public class UserCommandHandler {
                 .put(START_TEST.getCommandName(), new StartTestComm(sendBotMessageService))
                 .put(TEST.getCommandName(), new TestComm(sendBotMessageService))
                 //.put(MAIN_MENU.getCommandName(), new MainMenuComm(sendBotMessageService))
-                .put(START.getCommandName(), new MainMenuComm(sendBotMessageService, statisticUserService))
+                .put(START.getCommandName(), new MainMenuComm(sendBotMessageService, statisticUserService, tgUserService))
                 .put(SELECTION_COURSE.getCommandName(), new SelectionCourseComm(sendBotMessageService))
                 .put(LEVEL_ZERO_MENU.getCommandName(), new LevelZeroComm(sendBotMessageService))
                 .put(LEVEL_ADVANCED_MENU.getCommandName(), new LevelAdvancedComm(sendBotMessageService))
                 .put(RETURN_TO_SELECTION_COURSE.getCommandName(), new SelectionCourseComm(sendBotMessageService))
-                .put(RETURN_TO_MAIN_MENU.getCommandName(), new MainMenuComm(sendBotMessageService, statisticUserService))
+                .put(RETURN_TO_MAIN_MENU.getCommandName(), new MainMenuComm(sendBotMessageService, statisticUserService, tgUserService))
                 .put(INFO.getCommandName(), new InfoComm(sendBotMessageService))
                 .put(GROUPS.getCommandName(), new GroupsComm(sendBotMessageService))
                 .put(FAQ.getCommandName(), new FaqComm(sendBotMessageService))

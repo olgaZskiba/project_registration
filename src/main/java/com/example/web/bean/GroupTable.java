@@ -24,9 +24,9 @@ public class GroupTable  implements Serializable {
     @Column(name = "group_number")
     private Long groupNumber;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="course_name")   // insertable=false, updatable=false)
-    private CourseTable groupCourse;
+//    @ManyToOne(fetch = FetchType.EAGER) // cascade = CascadeType.ALL
+//    @JoinColumn(name="course_name")   // insertable=false, updatable=false)
+//    private CourseTable groupCourse;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "groupUser")
     private Set<TgUserTable> tgUserSet;

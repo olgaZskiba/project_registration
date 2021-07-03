@@ -8,8 +8,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Update User Info</title>
+    <style>
+        .layer1 {
+            margin-top: 3%; /* Отступ сверху */
+            margin-left: 3%; /* Отступ слева */
+            margin-right: 3%; /* Отступ справа */
+        }
+    </style>
 </head>
 <body>
+<div class="layer1">
 <form method="post" name="updateAllDataOfUsers">
     <tr th:each="TgUserTable: ${listUserForUpdate}">
         <div class="form-group">
@@ -56,14 +64,14 @@
             <th>Course name</th>
             <input type="text" class="form-control" th:placeholder="${TgUserTable.getCourseUser()}" name="courseUser">
         </div>
-        </div>
+        <div class="form-group">
         <th>Group number</th>
         <input type="text" class="form-control" th:placeholder="${TgUserTable.getGroupUser()}" name="groupUser">
         </div>
     </tr>
          <br>
         <br>
-        <button status="submit" class="btn btn-primary">Update</button>
+        <button status="submit" class="btn btn-secondary">Update</button>
         <br>
         <br>
 </form>
@@ -72,5 +80,6 @@
 <br>
 <a href="/admin">Back to main menu</a>
 <br>
+</div>
 </body>
 </html>

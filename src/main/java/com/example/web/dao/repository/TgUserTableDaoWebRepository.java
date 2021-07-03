@@ -11,14 +11,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public interface TgUserTableDaoWebRepository extends JpaRepository<TgUserTable, Long> {
 
     TgUserTable findByUserName(String userName);
+
+    List<TgUserTable> findByIdIsGreaterThan(Long id);
 
     Optional<TgUserTable> findByFirstName(String userName);
 
@@ -53,7 +57,7 @@ public interface TgUserTableDaoWebRepository extends JpaRepository<TgUserTable, 
             "course_name = ?11, group_number = ?12  WHERE id_user = ?1 ", nativeQuery = true)
     void updateUsersData(Long id, String userName, String firstName, String lastName, String email,
                          Date dateOfBirthday, Boolean active, Boolean blockUser, Boolean payment,
-                         UserRoles roles, CourseTable courseUser, GroupTable groupUser);
+                         Set<UserRoles> roles, CourseTable courseUser, GroupTable groupUser);
 
 }
 /*

@@ -1,21 +1,21 @@
 package com.example.web.controller;
 
-import com.example.web.bean.CourseTable;
-import com.example.web.bean.GroupTable;
-import com.example.web.bean.TgUserTable;
-import com.example.web.bean.UserRoles;
+import com.example.web.bean.*;
 import com.example.web.dao.service.AdminService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import java.util.Date;
-import java.util.List;
+import java.sql.Date;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 public class AdminController {
+
 
     private final AdminService adminService;
 
@@ -24,7 +24,12 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @GetMapping(value = "admin")
+    @GetMapping(value = "/")
+    public String mainPage(Map<String, Object> model){
+        return "hello";
+    }
+
+    @GetMapping(value = "/admin")
     public ModelAndView adminPage(){
         ModelAndView modelAndView = new ModelAndView("/admin.html");
         return modelAndView;
@@ -118,7 +123,7 @@ public class AdminController {
                                               @RequestParam(value = "active") Boolean active,
                                               @RequestParam(value = "blockUser") Boolean blockUser,
                                               @RequestParam(value = "payment") Boolean payment,
-                                              @RequestParam(value = "roles") UserRoles roles,
+                                              @RequestParam(value = "roles") Set<UserRoles> roles,
                                               @RequestParam(value = "courseUser") CourseTable courseUser,
                                               @RequestParam(value = "groupUser") GroupTable groupUser){
         ModelAndView modelAndView = new ModelAndView("/updateUserInfo.html");
@@ -144,7 +149,7 @@ public class AdminController {
                                          @RequestParam(value = "active") Boolean active,
                                          @RequestParam(value = "blockUser") Boolean blockUser,
                                          @RequestParam(value = "payment") Boolean payment,
-                                         @RequestParam(value = "roles") UserRoles roles,
+                                         @RequestParam(value = "roles") Set<UserRoles> roles,
                                          @RequestParam(value = "courseUser") CourseTable courseUser,
                                          @RequestParam(value = "groupUser") GroupTable groupUser){
         ModelAndView modelAndView = new ModelAndView("/addUser.html");

@@ -9,10 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public class TgUserTableDaoWebService {
+public class TgUserTableDaoWebService implements TgUserService{
+
+    private final TgUserTableDaoWebRepository tgUserTableDaoWebRepository;
 
     @Autowired
-    private TgUserTableDaoWebRepository tgUserTableDaoWebRepository;
+    public TgUserTableDaoWebService(TgUserTableDaoWebRepository tgUserTableDaoWebRepository) {
+        this.tgUserTableDaoWebRepository = tgUserTableDaoWebRepository;
+    }
 
     @Transactional
     public Iterable<TgUserTable> findAll() {
@@ -59,4 +63,13 @@ public class TgUserTableDaoWebService {
         return tgUserTableDaoWebRepository.count();
     }
 
+    @Override
+    public void save(TgUserTable tgUserTable) {
+    tgUserTableDaoWebRepository.save(tgUserTable);
+    }
+
+    @Override
+    public Optional<TgUserTable> findByChatId(Long chatId) {
+        return tgUserTableDaoWebRepository.findById(chatId);
+    }
 }

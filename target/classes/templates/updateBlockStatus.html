@@ -8,14 +8,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Update Block Status</title>
+    <style>
+        .layer1 {
+            margin-top: 3%; /* Отступ сверху */
+            margin-left: 3%; /* Отступ слева */
+            margin-right: 3%; /* Отступ справа */
+        }
+    </style>
 </head>
 <body>
+<div class="layer1">
 <form method="post" name="updateStatusBlockUser">
     <tr th:each="TgUserTable: ${listBlockUser}">
         <div class="form-group">
             <th>id</th>
             <input type="text" class="form-control" th:placeholder="${TgUserTable.id}" name="id">
         </div>
+        <div class="form-group">
         <th>Block Status</th>
         <input type="text" class="form-control" th:placeholder="${TgUserTable.getBlockUser()}" name="blockUser">
         </div>
@@ -34,7 +43,7 @@
     </tr>
          <br>
         <br>
-        <button status="submit" class="btn btn-primary">Update</button>
+        <button status="submit" class="btn btn-secondary">Update</button>
         <br>
         <br>
 </form>
@@ -43,5 +52,6 @@
 <br>
 <a href="/admin">Back to main menu</a>
 <br>
+</div>
 </body>
 </html>
